@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\MessageTestMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,6 @@ Route::resource('/task', App\Http\Controllers\TaskController::class)->middleware
 
 Route::get('/email-message', function() {
     return new MessageTestMail();
+    //Mail::to('resetpwd.test2022@gmail.com')->send(new MessageTestMail());
+    //return 'Email was send a success';
 });
