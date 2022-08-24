@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\MessageTestMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/task', App\Http\Controllers\TaskController::class)->middleware('auth');
+
+Route::get('/email-message', function() {
+    return new MessageTestMail();
+});
