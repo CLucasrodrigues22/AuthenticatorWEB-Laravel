@@ -32,7 +32,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('task.create');
     }
 
     /**
@@ -43,18 +43,19 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $taskModel = TaskModel::create($request->all());
+        return redirect()->route('task.show', ['task' => $taskModel->id]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TaskModel  $taskModel
+     * @param  \App\Models\TaskModel  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(TaskModel $taskModel)
+    public function show(TaskModel $task)
     {
-        //
+        dd($task->getAttributes());
     }
 
     /**
