@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TaskAlertMail;
 use App\Models\TaskModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TaskController extends Controller
 {
@@ -44,6 +46,8 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $taskModel = TaskModel::create($request->all());
+        $recipient = auth()->user()->email; // session user email address 
+        Mail::to($recipient)->send(new TaskAlertMail($taskModel));
         return redirect()->route('task.show', ['task' => $taskModel->id]);
     }
 
