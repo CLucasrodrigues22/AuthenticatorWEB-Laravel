@@ -11,5 +11,6 @@ class TaskModel extends Model
     protected $fillable = [
         'task',
         'date_conclusion',
+        'user_id',
     ];
 }

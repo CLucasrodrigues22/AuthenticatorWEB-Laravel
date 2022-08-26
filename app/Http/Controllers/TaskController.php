@@ -45,7 +45,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $taskModel = TaskModel::create($request->all());
+        $datas = $request->all();
+        $datas['user_id'] = auth()->user()->id;
+        $taskModel = TaskModel::create($datas);
         $recipient = auth()->user()->email; // session user email address 
         Mail::to($recipient)->send(new TaskAlertMail($taskModel));
         return redirect()->route('task.show', ['task' => $taskModel->id]);
@@ -59,7 +61,7 @@ class TaskController extends Controller
      */
     public function show(TaskModel $task)
     {
-        dd($task->getAttributes());
+        return view('task.show', ['task' => $task]);
     }
 
     /**
