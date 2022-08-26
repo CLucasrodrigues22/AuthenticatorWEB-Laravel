@@ -19,7 +19,7 @@ class TaskController extends Controller
         //verify authenticated user
         if (auth()->check()) {
             $user_id = auth()->user()->id;
-            $tasks = TaskModel::where('user_id', $user_id)->get();
+            $tasks = TaskModel::where('user_id', $user_id)->paginate(5);
             return view('task.index', ['tasks' => $tasks]);
         } else {
             return "Erro";

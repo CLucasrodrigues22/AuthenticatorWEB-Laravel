@@ -28,6 +28,25 @@
                             @endforeach
                         </tbody>
                       </table>
+                      <nav aria-label="Page navigation example">
+                        <ul class="pagination" style="margin:0rem 20rem 0rem 20rem;">
+                          <li class="page-item">
+                            <a class="page-link" href="{{ $tasks->previousPageUrl() }}" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+
+                          @for ($i = 1; $i <= $tasks->lastPage(); $i++)
+                            <li class="page-item {{ $tasks->currentPage() == $i ? 'active' : '' }}"><a class="page-link" href="{{ $tasks->url($i) }}">{{ $i }}</a></li>
+                          @endfor
+
+                          <li class="page-item">
+                            <a class="page-link" href="{{ $tasks->nextPageUrl() }}" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
                 </div>
             </div>
         </div>
