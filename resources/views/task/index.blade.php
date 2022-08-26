@@ -15,6 +15,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Task</th>
                             <th scope="col">Limit date</th>
+                            <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -24,6 +25,7 @@
                                     <td>{{ $task->user_id }}</td>
                                     <td>{{ $task->task }}</td>
                                     <td>{{ date('d/m/Y', strtotime($task->date_conclusion)) }}</td>
+                                    <td><a class="btn btn-sm btn-info" href="{{ route('task.edit', $task->id) }}">Edit</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

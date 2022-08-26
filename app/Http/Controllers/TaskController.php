@@ -69,9 +69,9 @@ class TaskController extends Controller
      * @param  \App\Models\TaskModel  $taskModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(TaskModel $taskModel)
+    public function edit(TaskModel $task)
     {
-        //
+        return view('task.edit', ['task' => $task]);
     }
 
     /**
@@ -81,9 +81,10 @@ class TaskController extends Controller
      * @param  \App\Models\TaskModel  $taskModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TaskModel $taskModel)
+    public function update(Request $request, TaskModel $task)
     {
-        //
+        $task->update($request->all());
+        return redirect()->route('task.index', ['task' => $task->id]);
     }
 
     /**
