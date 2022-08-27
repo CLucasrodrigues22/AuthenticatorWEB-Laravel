@@ -103,8 +103,14 @@ class TaskController extends Controller
      * @param  \App\Models\TaskModel  $taskModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TaskModel $taskModel)
+    public function destroy(TaskModel $task)
     {
-        //
+        $user_id = auth()->user()->id;
+        if ($task->user_id == $user_id) {
+            $task->delete();
+            return redirect()->route('task.index');
+        }
+
+        return view('access-denied');
     }
 }
