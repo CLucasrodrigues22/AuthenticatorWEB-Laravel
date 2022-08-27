@@ -71,7 +71,12 @@ class TaskController extends Controller
      */
     public function edit(TaskModel $task)
     {
-        return view('task.edit', ['task' => $task]);
+        $user_id = auth()->user()->id;
+        if ($task->user_id == $user_id) {
+            return view('task.edit', ['task' => $task]);
+        }
+
+        return view('access-denied');
     }
 
     /**
@@ -83,8 +88,13 @@ class TaskController extends Controller
      */
     public function update(Request $request, TaskModel $task)
     {
-        $task->update($request->all());
-        return redirect()->route('task.index', ['task' => $task->id]);
+        $user_id = auth()->user()->id;
+        if ($task->user_id == $user_id) {
+            $task->update($request->all());
+            return redirect()->route('task.index', ['task' => $task->id]);
+        }
+
+        return view('access-denied');
     }
 
     /**
