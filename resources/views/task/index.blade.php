@@ -5,8 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h3>Tasks List</h3></div>
-
+              <div class="card-header">
+                  <a class="btn btn-sm btn-success" style="float: right;" href="{{ route('task.create') }}">New Task</a>
+                  <h3>Tasks List</h3>
+                </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -26,14 +28,18 @@
                                     <td>{{ $task->task }}</td>
                                     <td>{{ date('d/m/Y', strtotime($task->date_conclusion)) }}</td>
                                     <td>
-                                      <a class="btn btn-sm btn-info" href="{{ route('task.edit', $task->id) }}">Edit</a>
-                                    </td>
-                                    <td>
-                                      <form action="{{ route('task.destroy', ['task' => $task->id]) }}" method="post" id="form_{{$task->id}}">
-                                        @method('DELETE')
-                                        @csrf
-                                      </form>
-                                      <a class="btn btn-sm btn-info" href="#" onclick="document.getElementById('form_{{$task->id}}').submit()">Delete</a>
+                                      <div class="row">
+                                        <div class="col-6" style="width: 20%;">
+                                          <a class="btn btn-sm btn-info" href="{{ route('task.edit', $task->id) }}">Edit</a>
+                                        </div>
+                                        <div class="col-6">
+                                          <form action="{{ route('task.destroy', ['task' => $task->id]) }}" method="post" id="form_{{$task->id}}">
+                                            @method('DELETE')
+                                            @csrf
+                                          </form>
+                                          <a class="btn btn-sm btn-info" href="#" onclick="document.getElementById('form_{{$task->id}}').submit()">Delete</a>
+                                        </div>
+                                      </div>
                                     </td>
                                 </tr>
                             @endforeach

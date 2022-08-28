@@ -25,7 +25,7 @@
                           <label for="dateconcluison" class="form-label">Date for conclusion</label>
                           <input type="date" name="date_conclusion" class="form-control" id="dateconcluison">
                         </div>
-                        <button type="submit" class="btn btn-primary">Create Task</button>
+                        <button type="submit" class="btn btn-success">Create Task</button>
                     </form>
                 </div>
             </div>

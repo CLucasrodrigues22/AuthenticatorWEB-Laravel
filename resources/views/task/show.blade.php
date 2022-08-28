@@ -25,7 +25,7 @@
                           <input type="date" value="{{ $task->date_conclusion }}" class="form-control" id="dateconcluison">
                         </div>
                     </fieldset>
-                    <a href="{{ url()->previous() }}" class="btn btn-primary">Previous</a>
+                    <a href="{{ route('task.index') }}" class="btn btn-primary">See tasks</a>
                 </div>
             </div>
         </div>
