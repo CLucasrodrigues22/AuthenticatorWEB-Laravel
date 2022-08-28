@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TasksExport;
 use App\Mail\TaskAlertMail;
 use App\Models\TaskModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TaskController extends Controller
 {
@@ -112,5 +114,9 @@ class TaskController extends Controller
         }
 
         return view('access-denied');
+    }
+
+    public function exportFiles() {
+        return Excel::download(new TasksExport, 'taskslist.xlsx');
     }
 }

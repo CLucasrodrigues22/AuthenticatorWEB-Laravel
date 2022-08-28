@@ -24,10 +24,9 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
 ->name('home')->middleware('verified');
+Route::get('/task/export', [App\Http\Controllers\TaskController::class, 'exportfiles'])->name('task.export')->middleware('auth', 'verified');;
 Route::resource('/task', App\Http\Controllers\TaskController::class)->middleware('auth', 'verified');
 
 Route::get('/email-message', function() {
     return new MessageTestMail();
-    //Mail::to('resetpwd.test2022@gmail.com')->send(new MessageTestMail());
-    //return 'Email was send a success';
 });

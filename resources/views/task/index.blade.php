@@ -6,7 +6,8 @@
         <div class="col-md-8">
             <div class="card">
               <div class="card-header">
-                  <a class="btn btn-sm btn-success" style="float: right;" href="{{ route('task.create') }}">New Task</a>
+                  <a class="btn btn-sm btn-success" style="float: right; margin-right: 1%;" href="{{ route('task.create') }}">New Task</a>
+                  <a class="btn btn-sm btn-success" style="float: right; margin-right: 1%;" href="{{ route('task.export') }}">Export Tasks</a>
                   <h3>Tasks List</h3>
                 </div>
                 <div class="card-body">
