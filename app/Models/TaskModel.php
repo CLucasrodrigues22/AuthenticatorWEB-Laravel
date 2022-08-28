@@ -13,4 +13,9 @@ class TaskModel extends Model
         'date_conclusion',
         'user_id',
     ];
+
+    public function user() {
+        //belongsTo()
+        return $this->belongsTo('App\Models\User');
+    }
 }
