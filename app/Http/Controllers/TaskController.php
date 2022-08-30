@@ -116,7 +116,15 @@ class TaskController extends Controller
         return view('access-denied');
     }
 
-    public function exportFiles() {
-        return Excel::download(new TasksExport, 'taskslist.xlsx');
+    public function exportFiles($extension) {
+        $filenamedefault = 'taskslist';
+        if($extension == 'xlsx') {
+            $filenamedefault.= '.'.$extension;
+        } elseif ($extension == 'csv') {
+            $filenamedefault.= '.'.$extension;
+        } else {
+            return redirect()->route('task.index');
+        }
+        return Excel::download(new TasksExport, $filenamedefault);
     }
 }

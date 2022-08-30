@@ -7,7 +7,8 @@
             <div class="card">
               <div class="card-header">
                   <a class="btn btn-sm btn-success" style="float: right; margin-right: 1%;" href="{{ route('task.create') }}">New Task</a>
-                  <a class="btn btn-sm btn-success" style="float: right; margin-right: 1%;" href="{{ route('task.export') }}">Export Tasks</a>
+                  <a class="btn btn-sm btn-success" style="float: right; margin-right: 1%;" href="{{ route('task.export', ['extension' => 'xlsx']) }}">Export XLSX</a>
+                  <a class="btn btn-sm btn-success" style="float: right; margin-right: 1%;" href="{{ route('task.export', ['extension' => 'csv']) }}">Export CSV</a>
                   <h3>Tasks List</h3>
                 </div>
                 <div class="card-body">
